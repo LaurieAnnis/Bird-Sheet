@@ -6,3 +6,4 @@ body { padding: 0; margin: 0 }
 #unity-progress-bar-empty { margin-left: auto; margin-right: auto; width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-dark.png') no-repeat center }
 #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('progress-bar-full-dark.png') no-repeat center }
 #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
+#update-banner { position: absolute; left: 50%; top: max(12px, env(safe-area-inset-top)); transform: translate(-50%); max-width: 90%; padding: 12px 16px; border: 2px solid #5a3e22; border-radius: 6px; background: #ebdec3; color: #3c3228; font: 15px Georgia, serif; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35); display: none }
