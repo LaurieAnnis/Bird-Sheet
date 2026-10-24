@@ -1,4 +1,4 @@
-const cacheName = "DefaultCompany-BirdSheet-1.0";
+const cacheName = "DefaultCompany-BirdSheet-1.1.0";
 const contentToCache = [
     "Build/WebGL.loader.js",
     "Build/WebGL.framework.js",
