@@ -4,6 +4,8 @@
 // again; the new copy then takes over immediately and deletes the previous build's cache.
 const cachePrefix = "DefaultCompany-BirdSheet-";
 const cacheName = cachePrefix + "1.1.0-47c0d617e730b6618d3f5e2e7bb40a7c.loader.js-ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js-caedc6fe9dd5f948f0d78ffdcf815669.data-7ed539f980325d49259994d20069f0ea.wasm";
+// Left behind by Unity's own Data Caching, which this worker replaces
+const unityDataCacheName = "UnityCache_DefaultCompany_BirdSheet";
 
 // Re-fetched past the HTTP cache on install (GitHub Pages lets browsers keep files for 10 minutes)
 const appShell = [
@@ -36,7 +38,9 @@ self.addEventListener("activate", function (e) {
         // Other games on this origin keep their own caches, so only this app's old builds are removed
         const names = await caches.keys();
         await Promise.all(names
-            .filter(function (name) { return name.startsWith(cachePrefix) && name !== cacheName; })
+            .filter(function (name) {
+                return (name.startsWith(cachePrefix) && name !== cacheName) || name === unityDataCacheName;
+            })
             .map(function (name) { return caches.delete(name); }));
         await self.clients.claim();
     })());

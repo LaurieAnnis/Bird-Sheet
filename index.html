@@ -18,7 +18,8 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <button id="update-banner" type="button">A new version of Bird Sheet is ready. Tap to update.</button>
+      <!-- Hidden inline too: right after an upgrade the old worker may still serve an older style.css -->
+      <button id="update-banner" type="button" style="display: none">A new version of Bird Sheet is ready. Tap to update.</button>
     </div>
     <script>
       // Registered once the build has loaded, so the worker's precache reuses the files just downloaded
