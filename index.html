@@ -22,6 +22,17 @@
       <button id="update-banner" type="button" style="display: none">A new version of Bird Sheet is ready. Tap to update.</button>
     </div>
     <script>
+      // On phones Unity types through its own text box. The sheet's fields show the text and caret themselves
+      // (Hide Mobile Input), so the box stays focused for the keyboard but invisible at the top of the screen.
+      new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.input && node.okButton)
+              node.style.cssText += "top: 0; bottom: auto; opacity: 0; pointer-events: none;";
+          });
+        });
+      }).observe(document.body, { childList: true });
+
       // Registered once the build has loaded, so the worker's precache reuses the files just downloaded
       function registerServiceWorker(unityInstance) {
         if (!("serviceWorker" in navigator)) return;
@@ -83,12 +94,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/49372731ef3a5ddbe53ea3741919b39c.loader.js";
+      var loaderUrl = buildUrl + "/d27ce5a0284f763166d552af04b8346d.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/87019e4060ba51c0c924f2ac9db6590c.data",
+        dataUrl: buildUrl + "/4e07a3bc44cee0fca2c6700ebc768d93.data",
         frameworkUrl: buildUrl + "/ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js",
-        codeUrl: buildUrl + "/35ba7ed70b7bf46b06233cf0417f7429.wasm",
+        codeUrl: buildUrl + "/60817475fb2aa43412114f7bca755e9f.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "BirdSheet",
