@@ -27,11 +27,32 @@
       new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
           mutation.addedNodes.forEach(function (node) {
-            if (node.input && node.okButton)
+            if (node.input && node.okButton) {
               node.style.cssText += "top: 0; bottom: auto; opacity: 0; pointer-events: none;";
+              useNumericTextBox(node);
+            }
           });
         });
       }).observe(document.body, { childList: true });
+
+      // Unity gives number fields an <input type="number">, which on iPhone reports no cursor position, so
+      // Unity's caret stays at the start and "20" comes out as "02". A text box with the numeric keypad
+      // reports the cursor properly. Unity sets the type again each time a field opens, so keep watching it.
+      function useNumericTextBox(container) {
+        var input = container.input;
+        function fix() {
+          if (container.inputType === "number") {
+            if (input.type !== "text") input.type = "text";
+            input.inputMode = "numeric";
+            input.pattern = "[0-9]*";
+          } else if (input.inputMode === "numeric") {
+            input.removeAttribute("inputmode");
+            input.removeAttribute("pattern");
+          }
+        }
+        fix();
+        new MutationObserver(fix).observe(input, { attributes: true, attributeFilter: ["type"] });
+      }
 
       // Registered once the build has loaded, so the worker's precache reuses the files just downloaded
       function registerServiceWorker(unityInstance) {
@@ -94,12 +115,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/b6aa1aa397c4815d735901dd24a23355.loader.js";
+      var loaderUrl = buildUrl + "/050bf859123d06a64f03427cbed99c02.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/1489acddb57c8fde13b50a97adfa0ace.data",
-        frameworkUrl: buildUrl + "/ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js",
-        codeUrl: buildUrl + "/3379bdf1bd9edffb407c2cc6be31ba77.wasm",
+        dataUrl: buildUrl + "/aa66dc941c323d545610eaf634f5c98f.data",
+        frameworkUrl: buildUrl + "/6f1d840769b755196834e0a61190fd78.framework.js",
+        codeUrl: buildUrl + "/c689cf970ca9b810ad8fa601fd95b59d.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "BirdSheet",
