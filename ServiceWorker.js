@@ -3,7 +3,7 @@
 // changes whenever the build does. That byte change is what makes browsers install this worker
 // again; the new copy then takes over immediately and deletes the previous build's cache.
 const cachePrefix = "DefaultCompany-BirdSheet-";
-const cacheName = cachePrefix + "1.1.0-050bf859123d06a64f03427cbed99c02.loader.js-6f1d840769b755196834e0a61190fd78.framework.js-c426684c5f6a828b508a3a32fefbc4e6.data-c689cf970ca9b810ad8fa601fd95b59d.wasm";
+const cacheName = cachePrefix + "1.1.0-050bf859123d06a64f03427cbed99c02.loader.js-6f1d840769b755196834e0a61190fd78.framework.js-6171db10276cf24723ab4f2b46486804.data-c689cf970ca9b810ad8fa601fd95b59d.wasm";
 // Left behind by Unity's own Data Caching, which this worker replaces
 const unityDataCacheName = "UnityCache_DefaultCompany_BirdSheet";
 
@@ -19,7 +19,7 @@ const appShell = [
 const buildFiles = [
     "Build/050bf859123d06a64f03427cbed99c02.loader.js",
     "Build/6f1d840769b755196834e0a61190fd78.framework.js",
-    "Build/c426684c5f6a828b508a3a32fefbc4e6.data",
+    "Build/6171db10276cf24723ab4f2b46486804.data",
     "Build/c689cf970ca9b810ad8fa601fd95b59d.wasm"
 ];
 
