@@ -3,7 +3,7 @@
 // changes whenever the build does. That byte change is what makes browsers install this worker
 // again; the new copy then takes over immediately and deletes the previous build's cache.
 const cachePrefix = "DefaultCompany-BirdSheet-";
-const cacheName = cachePrefix + "1.1.0-d27ce5a0284f763166d552af04b8346d.loader.js-ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js-4e07a3bc44cee0fca2c6700ebc768d93.data-60817475fb2aa43412114f7bca755e9f.wasm";
+const cacheName = cachePrefix + "1.1.0-b6aa1aa397c4815d735901dd24a23355.loader.js-ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js-1489acddb57c8fde13b50a97adfa0ace.data-3379bdf1bd9edffb407c2cc6be31ba77.wasm";
 // Left behind by Unity's own Data Caching, which this worker replaces
 const unityDataCacheName = "UnityCache_DefaultCompany_BirdSheet";
 
@@ -17,10 +17,10 @@ const appShell = [
 
 // Content-hashed, so a copy already in the HTTP cache is guaranteed current
 const buildFiles = [
-    "Build/d27ce5a0284f763166d552af04b8346d.loader.js",
+    "Build/b6aa1aa397c4815d735901dd24a23355.loader.js",
     "Build/ff13cde4e9a2509b567ea3bc71c0ccfc.framework.js",
-    "Build/4e07a3bc44cee0fca2c6700ebc768d93.data",
-    "Build/60817475fb2aa43412114f7bca755e9f.wasm"
+    "Build/1489acddb57c8fde13b50a97adfa0ace.data",
+    "Build/3379bdf1bd9edffb407c2cc6be31ba77.wasm"
 ];
 
 self.addEventListener("install", function (e) {
